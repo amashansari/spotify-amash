@@ -1,38 +1,405 @@
+/*                                         ROOT SECTION                                          */
+
+:root {
+  /* color declaration */
+  --bg-color-1: linear-gradient(108.18deg, #201606 2.46%, #000000 99.84%);
+  --bg-color-2: hsla(0, 0%, 100%, 0.08);
+  --bg-color-3: #fff;
+
+  --text-color-1: #fff;
+  --text-color-2: #aeaeae;
+  --text-color-3: #000;
+}
+
 .App {
-  text-align: center;
+  background: #000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/*                                         PAGE LAYOUT SECTION                                    */
+
+.main-pageLayout-container {
+  color: var(--text-colopxr-1);
+  display: flex;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.tab-fix-view {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/*                                         USER SECTION                                           */
+
+.main-user-container {
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: 32px 0 32px 32px;
+}
+
+/*                                         TRACK LIST SECTION                                      */
+
+.main-trackList-container {
+  padding: 40px 0 0 0;
+  color: var(--text-color-1);
+  width: 432px;
+}
+
+.trackList-tab {
+  width: 258px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: left;
+  color: var(--text-color-2);
+  padding: 0 16px;
+}
+
+.trackList-tab:hover {
+  cursor: pointer;
+}
+
+.active {
+  color: var(--text-color-1);
+}
+
+.trackList-search {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 32px 0 0 0;
+  padding: 0 16px;
 }
 
-.App-link {
-  color: #61dafb;
+.trackList-search input {
+  background-color: var(--bg-color-2);
+  border: none;
+  width: 400px;
+  height: 48px;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 18px;
+  color: var(--text-color-1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.search-icon {
+  position: relative;
+  right: 40px;
+}
+
+.trackList-list {
+  height: calc(100vh - 180px);
+  margin: 24px 0 0 0;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.list-items {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding: 0 16px;
+}
+
+.active-song {
+  background-color: var(--bg-color-2);
+}
+
+.song-info {
+  display: flex;
+  align-items: center;
+}
+
+.song-profile {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+.song-profile img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.song-title {
+  font-size: 18px;
+  color: var(--text-color-1);
+}
+.song-artist {
+  font-size: 14px;
+  color: var(--text-color-2);
+}
+.song-duration {
+  color: var(--text-color-2);
+}
+
+/*                                         MUSIC PLAYER SECTION                                     */
+
+.rhap_container {
+  background-color: transparent !important;
+  padding: 0px !important;
+  box-shadow: none !important;
+}
+
+.rhap_progress-filled {
+  background: var(--bg-color-3) !important;
+}
+
+.rhap_download-progress {
+  background-color: #868686 !important;
+}
+
+.rhap_progress-indicator {
+  display: none !important;
+}
+
+.rhap_time {
+  color: var(--text-color-1) !important;
+}
+
+.rhap_volume-bar-area {
+  display: none !important;
+}
+
+.rhap_volume-container {
+  justify-content: flex-end;
+}
+
+/*                                         TRACK VIEW SECTION                                      */
+
+.track-view {
+  width: 480px;
+  padding-top: 101px;
+}
+
+.arrow-spotify {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.viewSpotify {
+  display: none;
+}
+
+.downArrow {
+  display: none;
+}
+
+.song-name-view {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-color-1);
+}
+
+.song-artist-track-view {
+  padding-bottom: 32px;
+  color: var(--text-color-2);
+}
+
+.playingLyrics {
+  display: flex;
+  gap: 18px;
+}
+
+.playing {
+  display: none;
+}
+.lyrics {
+  display: none;
+}
+
+.song-name-mobile {
+  display: none;
+}
+
+.song-artist-track-mobile {
+  display: none;
+}
+
+.song-cover {
+  width: 480px;
+  height: 480px;
+  padding-bottom: 24px;
+}
+
+.song-cover img {
+  width: 100%;
+  height: 100%;
+}
+
+.rhap_repeat-button {
+  width: 50px;
+  height: 50px;
+}
+
+/*                                         MOBILE VIEW SECTION                                      */
+
+.mobile-music {
+  display: none;
+}
+
+/*                                         RESPONSIVE SECTION                                       */
+
+@media screen and (max-width: 1150px) {
+  .main-pageLayout-container {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main-user-container {
+    height: 100%;
+    flex-direction: row;
+    padding: 20px;
   }
+
+  .trackList-search input {
+    max-width: 1150px;
+    width: 100%;
+    height: 38px;
+  }
+
+  .track-view {
+    max-width: 480px;
+    width: 100%;
+  }
+
+  .song-cover {
+    max-width: 480px;
+    max-height: 480px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .App {
+    height: 100vh;
+    overflow-y: hidden;
+  }
+
+  .main-pageLayout-container {
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    height: 100vh;
+    justify-content: start;
+  }
+
+  .main-user-container {
+    height: 100%;
+    flex-direction: row;
+    padding: 10px;
+  }
+
+  .customTrackList {
+    width: 100%;
+  }
+
+  .main-trackList-container {
+    max-width: 992px;
+    width: 100%;
+    padding: 0;
+  }
+
+  .trackList-list {
+    width: 100%;
+    height: calc(100vh - 68px - 198px);
+  }
+
+  .mobile-music {
+    display: block;
+    padding: 10px 10px 10px 10px;
+    background: #373737;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 2000;
+  }
+
+  .main-trackView-container {
+    display: flex;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    position: absolute;
+    z-index: 3000;
+    bottom: 0;
+    transform: translateY(100%);
+    width: 100%;
+  }
+  .mobile-fix-view {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+  }
+  .song-name-view {
+    display: none;
+  }
+
+  .song-artist-track-view {
+    display: none;
+  }
+
+  .viewSpotify {
+    display: block;
+    margin: 20px 0;
+  }
+
+  .downArrow {
+    display: block;
+    margin-bottom: 20px;
+  }
+  .playing {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-color-3);
+    background-color: var(--bg-color-3);
+    padding: 0 20px;
+    border-radius: 40px;
+    margin-bottom: 20px;
+  }
+  .lyrics {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-color-1);
+  }
+
+  .song-name-mobile {
+    display: block;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-color-1);
+  }
+
+  .song-artist-track-mobile {
+    display: block;
+    padding-bottom: 32px;
+    color: var(--text-color-2);
+  }
+
+  .pop {
+    transform: translateY(0%);
+    height: 100vh;
+    align-items: center;
+  }
+  .track-view {
+    max-width: 768px;
+    padding: 20px;
+    height: 100%;
+  }
+
+  .song-cover {
+    max-width: 768px;
+    height: 420px;
+  }
+  .song-cover img{
+    object-fit: cover;
+
+  }
+
 }
