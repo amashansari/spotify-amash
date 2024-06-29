@@ -5,19 +5,20 @@ import { getToggle } from "../../ReduxManager/action";
 
 const CustomMobilePage = () => {
   const selectedSong = useSelector((state) => state.currentSong);
+  const isPlaying = useSelector((state) => state.pause); 
   const [isToggle, setIsToggle] = useState(false);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-    setIsToggle(!isToggle)
-    dispatch(getToggle(isToggle))
-};
+    setIsToggle(!isToggle);
+    dispatch(getToggle(isToggle));
+  };
 
   return (
     <>
       <div className="mobile-music" onClick={handleClick}>
-        <div className={`${selectedSong}`}>
+        <div className={`${selectedSong} mobile-view-section`}>
           <div className="song-info">
             <div className="song-profile">
               {selectedSong ? (
@@ -34,7 +35,15 @@ const CustomMobilePage = () => {
               <div className="song-artist">{selectedSong?.artist}</div>
             </div>
           </div>
-          <div className="song-play-pause">{/* <CustomMusicPlayer /> */}</div>
+          <div className="song-play-pause">
+              <div className="main-loader">
+                <div className={`loader ${isPlaying ? "" : "bar-stop"}`}>
+                  <span className="bar"></span>
+                  <span className="bar"></span>
+                  <span className="bar"></span>
+                </div>
+              </div>
+          </div>
         </div>
       </div>
     </>

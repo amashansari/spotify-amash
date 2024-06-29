@@ -7,11 +7,12 @@ import { ReactComponent as Pause } from "../../Assets/SVG/pause.svg";
 import { ReactComponent as ForwardArrow } from "../../Assets/SVG/forward.svg";
 import { ReactComponent as BackwardArrow } from "../../Assets/SVG/backward.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { songDetail } from "../../ReduxManager/action";
+import { pause, play, songDetail } from "../../ReduxManager/action";
 
 const CustomMusicPlayer = () => {
   const selectedSong = useSelector((state) => state.currentSong);
   const allSongs = useSelector((state) => state.allSongs);
+
 
   const dispatch = useDispatch();
 
@@ -74,6 +75,13 @@ const CustomMusicPlayer = () => {
     }
   };
 
+  const handlePlay = () => {
+    dispatch(play())
+  }
+  const handlePause = () => {
+    dispatch(pause())
+  }
+
   useEffect(() => {
     if (selectedSong?.url) {
       setSongs(selectedSong.url);
@@ -97,7 +105,10 @@ const CustomMusicPlayer = () => {
       showSkipControls={true}
       onClickPrevious={clickPrevious}
       onClickNext={clickNext}
-    />
+      onPause={handlePause}
+      onPlay={handlePlay}
+      onPlaying={handlePlay}
+      />
   );
 };
 

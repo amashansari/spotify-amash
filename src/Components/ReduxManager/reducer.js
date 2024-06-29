@@ -3,6 +3,7 @@ const initialState = {
   allSongs: null,
   color: null,
   toggled: false,
+  pause: false,
 };
 
 const myReducer = (state = initialState, action) => {
@@ -17,6 +18,10 @@ const myReducer = (state = initialState, action) => {
       return { ...state, toggled: !state.toggled };
     case "TOOGLE_OFF":
       return { ...state, toggled: false };
+    case "PAUSE":
+      return { ...state, pause: false };
+    case "PLAY":
+      return { ...state, pause: true };
     default:
       return state;
   }

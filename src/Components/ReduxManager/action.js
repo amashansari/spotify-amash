@@ -30,4 +30,18 @@ export const toggleOff = () => {
   return {
     type: "TOOGLE_OFF",
   };
+
+}
+
+export const pause = (pause) => {
+  return {
+    type: "PAUSE",
+    payload: pause
+  };
+}
+
+export const play = () => {
+  return {
+    type: "PLAY",
+  };
 }
