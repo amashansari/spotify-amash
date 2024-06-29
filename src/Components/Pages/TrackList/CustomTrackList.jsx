@@ -111,7 +111,13 @@ const CustomTrackList = () => {
         )}
         {activeTab === "TOP_TRACKS" ? (
           <div className="trackList-list">
-            <div className="list-items">Loading...</div>
+            <div className="main-loader">
+              <div class="loader">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+            </div>
           </div>
         ) : (
           ""
