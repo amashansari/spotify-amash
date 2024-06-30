@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, act } from "react";
 import CustomMusicPlayer from "../MusicPlayer/CustomMusicPlayer";
 import { useDispatch, useSelector } from "react-redux";
 import Sopitfyimg from "../../Assets/SVG/spotify.svg";
@@ -11,6 +11,7 @@ const CustomTrackView = () => {
   const getToggle = useSelector((state) => state.toggled);
   const currentColor = useSelector((state) => state.color);
 
+  const [activeTab, setActiveTab] = useState("PLAYING");
   const [color, setColor] = useState([0, 0, 0]);
   const dispatch = useDispatch();
 
@@ -50,28 +51,48 @@ const CustomTrackView = () => {
     >
       <div className="track-view">
         <div className="arrow-spotify">
-        <div className="downArrow" onClick={handleClose}>
-          <img src={DownImg} alt="" />
-        </div>
-        <div className="viewSpotify">
-          <img src={Sopitfyimg} alt="" />
-        </div>
+          <div className="downArrow" onClick={handleClose}>
+            <img src={DownImg} alt="" />
+          </div>
+          <div className="viewSpotify">
+            <img src={Sopitfyimg} alt="" />
+          </div>
         </div>
         <div className="playingLyrics">
-        <div className="playing">Playing</div><div className="lyrics">Lyrics</div>
+          <div
+            className={`playing ${activeTab === "PLAYING" ? "track-active-tab" : ""}`}
+            onClick={() => setActiveTab("PLAYING")}
+          >
+            Playing
+          </div>
+          <div
+            className={`lyrics ${activeTab === "LYRICS" ? "track-active-tab" : ""}`}
+            onClick={() => setActiveTab("LYRICS")}
+          >
+            Lyrics
+          </div>
         </div>
         <div className="song-name-view">{selectedSong?.name}</div>
         <div className="song-artist-track-view">{selectedSong?.artist}</div>
-        <div className="song-cover">
-          {selectedSong ? (
-            <img
-              src={`https://cms.samespace.com/assets/${selectedSong?.cover}`}
-              alt="song image"
-            />
-          ) : (
-            <img src={Sopitfyimg} alt="song image" />
-          )}
-        </div>
+        {activeTab === "PLAYING" ? (
+          <div className="song-cover">
+            {selectedSong ? (
+              <img
+                src={`https://cms.samespace.com/assets/${selectedSong?.cover}`}
+                alt="song image"
+              />
+            ) : (
+              <img src={Sopitfyimg} alt="song image" />
+            )}
+          </div>
+        ) : (
+          ""
+        )}
+        {activeTab === "LYRICS" ? (
+          <div className="lyrics-not song-cover">Can't Load the lyrics for this song</div>
+        ) : (
+          ""
+        )}
         <div className="song-name-mobile">{selectedSong?.name}</div>
         <div className="song-artist-track-mobile">{selectedSong?.artist}</div>
         <div className="song-control">

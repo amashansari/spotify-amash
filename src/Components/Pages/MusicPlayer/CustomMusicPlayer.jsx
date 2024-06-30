@@ -8,11 +8,11 @@ import { ReactComponent as ForwardArrow } from "../../Assets/SVG/forward.svg";
 import { ReactComponent as BackwardArrow } from "../../Assets/SVG/backward.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { pause, play, songDetail } from "../../ReduxManager/action";
+import MoreImg from "../../Assets/SVG/more.svg";
 
 const CustomMusicPlayer = () => {
   const selectedSong = useSelector((state) => state.currentSong);
   const allSongs = useSelector((state) => state.allSongs);
-
 
   const dispatch = useDispatch();
 
@@ -36,9 +36,8 @@ const CustomMusicPlayer = () => {
         }
       }
     }
-    return null; 
+    return null;
   }
-
 
   function findPreviousObjectById(array, currentId) {
     for (let i = 0; i < array.length; i++) {
@@ -49,9 +48,8 @@ const CustomMusicPlayer = () => {
         }
       }
     }
-    return null; 
+    return null;
   }
-
 
   const clickNext = () => {
     console.log("Clicked Next");
@@ -63,7 +61,7 @@ const CustomMusicPlayer = () => {
       }
     }
   };
-  
+
   const clickPrevious = () => {
     console.log("Clicked Previous");
     if (selectedSong) {
@@ -76,11 +74,11 @@ const CustomMusicPlayer = () => {
   };
 
   const handlePlay = () => {
-    dispatch(play())
-  }
+    dispatch(play());
+  };
   const handlePause = () => {
-    dispatch(pause())
-  }
+    dispatch(pause());
+  };
 
   useEffect(() => {
     if (selectedSong?.url) {
@@ -93,22 +91,28 @@ const CustomMusicPlayer = () => {
   }, []);
 
   return (
-    <AudioPlayer
-      customAdditionalControls={[]}
-      customIcons={{
-        play: <Play />,
-        pause: <Pause />,
-        forward: <ForwardArrow />,
-        rewind: <BackwardArrow />,
-      }}
-      src={songs}
-      showSkipControls={true}
-      onClickPrevious={clickPrevious}
-      onClickNext={clickNext}
-      onPause={handlePause}
-      onPlay={handlePlay}
-      onPlaying={handlePlay}
+    <>
+      <AudioPlayer
+        className="customPlayer"
+        customAdditionalControls={[]}
+        customIcons={{
+          play: <Play />,
+          pause: <Pause />,
+          forward: <ForwardArrow />,
+          rewind: <BackwardArrow />,
+        }}
+        src={songs}
+        showSkipControls={true}
+        onClickPrevious={clickPrevious}
+        onClickNext={clickNext}
+        onPause={handlePause}
+        onPlay={handlePlay}
+        onPlaying={handlePlay}
       />
+      <div className="more-action">
+        <img src={MoreImg} alt="" />
+      </div>
+    </>
   );
 };
 

@@ -5,6 +5,7 @@
   --bg-color-1: linear-gradient(108.18deg, #201606 2.46%, #000000 99.84%);
   --bg-color-2: hsla(0, 0%, 100%, 0.08);
   --bg-color-3: #fff;
+  --bg-color-4: hsla(0, 0%, 100%, 0.04);
 
   --text-color-1: #fff;
   --text-color-2: #aeaeae;
@@ -22,7 +23,6 @@ input[type="text"]::placeholder {
 /*                                         PAGE LAYOUT SECTION                                    */
 
 .main-pageLayout-container {
-  color: var(--text-colopxr-1);
   display: flex;
 }
 
@@ -106,6 +106,10 @@ input[type="text"]::placeholder {
   justify-content: space-between;
   border-radius: 8px;
   padding: 0 16px;
+}
+
+.list-items:hover {
+  background: var(--bg-color-4);
 }
 
 .active-song {
@@ -208,11 +212,13 @@ input[type="text"]::placeholder {
 .playingLyrics {
   display: flex;
   gap: 18px;
+  margin-bottom: 20px;
 }
 
 .playing {
   display: none;
 }
+
 .lyrics {
   display: none;
 }
@@ -236,9 +242,18 @@ input[type="text"]::placeholder {
   height: 100%;
 }
 
+.song-control {
+  position: relative;
+}
+
 .rhap_repeat-button {
   width: 50px;
   height: 50px;
+}
+
+.more-action {
+  position: absolute;
+  bottom: 0;
 }
 
 /*                                         MOBILE VIEW SECTION                                      */
@@ -271,7 +286,7 @@ input[type="text"]::placeholder {
 }
 
 .bar-stop .bar {
-  animation:none;
+  animation: none;
 }
 
 .bar:nth-child(2) {
@@ -411,20 +426,38 @@ input[type="text"]::placeholder {
     display: block;
     margin-bottom: 20px;
   }
-  .playing {
+
+  .track-active-tab {
     display: inline-block;
     font-size: 20px;
     font-weight: 700;
-    color: var(--text-color-3);
+    color: var(--text-color-3) !important;
     background-color: var(--bg-color-3);
     padding: 0 20px;
     border-radius: 40px;
-    margin-bottom: 20px;
   }
+
+  .playing {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-color-1);
+  }
+
   .lyrics {
     display: inline-block;
     font-size: 20px;
     font-weight: 500;
+    color: var(--text-color-1);
+  }
+
+  .lyrics-not {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 700;
     color: var(--text-color-1);
   }
 
@@ -456,7 +489,8 @@ input[type="text"]::placeholder {
     max-width: 768px;
     height: 420px;
   }
-  .song-cover img {
-    /* object-fit: cover; */
+
+  .song-cover img{
+    object-fit: cover;
   }
 }
