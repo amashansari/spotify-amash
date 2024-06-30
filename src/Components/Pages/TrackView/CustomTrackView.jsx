@@ -82,7 +82,7 @@ const CustomTrackView = () => {
                 alt="song image"
               />
             ) : (
-              <img src={Sopitfyimg} alt="song image" />
+              <img src={Sopitfyimg} className="spotify-track-view" alt="song image" />
             )}
           </div>
         ) : (
